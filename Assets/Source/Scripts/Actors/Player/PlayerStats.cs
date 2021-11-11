@@ -25,10 +25,7 @@ namespace Ingame
         {
             amountOfDamage = Mathf.Abs(amountOfDamage);
             _currentHp -= amountOfDamage;
-            
-            //todo debug
-            this.SafeDebug(_currentHp);
-            
+
             if(_currentHp < 1)
                 Die();
         }
