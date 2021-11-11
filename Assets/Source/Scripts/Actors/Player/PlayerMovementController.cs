@@ -25,9 +25,19 @@ namespace Ingame
             InputSystem.Instance.OnDragAction -= Rotate;
         }
 
+        private void FixedUpdate()
+        {
+            Move();
+        }
+
         private void Move()
         {
-            
+            var joystickDirection = InputSystem.Instance.Joystick.Direction;
+            var deltaMovement =  new Vector3(joystickDirection.x, 0, joystickDirection.y);
+            deltaMovement *= _playerEventController.PlayerData.MovementSpeed;
+            deltaMovement *= Time.fixedDeltaTime;
+
+            _characterController.Move(deltaMovement);
         }
 
         private void Rotate(Vector2 dragDirection)
