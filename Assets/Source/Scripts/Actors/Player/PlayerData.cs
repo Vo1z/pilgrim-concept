@@ -6,13 +6,16 @@ namespace Ingame
     [CreateAssetMenu(menuName = "Data/PlayerData", fileName = "newPlayerData")]
     public class PlayerData : ScriptableObject
     {
-        [Foldout("Movement")][SerializeField][Min(0)] private float movementSpeed;
-        [Foldout("Movement")][SerializeField][Min(0)] private float rotationSpeed;
+        [Foldout("Movement")][SerializeField][Min(0)] private float movementSpeed = 10;
+        [Foldout("Movement")][SerializeField][Min(0)] private float rotationSpeed = 1;
+        [Foldout("Movement")][SerializeField][Min(0)] private float gravityForce = 1;
+        
         
         [Foldout("Lifetime")][SerializeField][Min(0)] private float initialHp;
 
         public float MovementSpeed => movementSpeed;
         public float RotationSpeed => rotationSpeed;
+        public float GravityForce => gravityForce;
 
         public float InitialHp => initialHp;
     }

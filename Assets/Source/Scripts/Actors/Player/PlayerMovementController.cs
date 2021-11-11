@@ -33,7 +33,10 @@ namespace Ingame
         private void Move()
         {
             var joystickDirection = InputSystem.Instance.Joystick.Direction;
-            var deltaMovement =  new Vector3(joystickDirection.x, 0, joystickDirection.y);
+            var deltaMovement = transform.forward * joystickDirection.y +
+                                transform.right * joystickDirection.x +
+                                Vector3.down * _playerEventController.PlayerData.GravityForce;
+            deltaMovement = deltaMovement.normalized;
             deltaMovement *= _playerEventController.PlayerData.MovementSpeed;
             deltaMovement *= Time.fixedDeltaTime;
 
