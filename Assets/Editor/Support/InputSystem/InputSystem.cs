@@ -1,5 +1,6 @@
 using System;
 using Extensions;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +12,9 @@ namespace Support
 	public class InputSystem : MonoSingleton<InputSystem>, IPointerDownHandler, IPointerUpHandler, IDragHandler
 	{
 		[SerializeField] private float minimumDeltaSwipe = 2f;
+		[Required] [SerializeField] private Joystick joystick;
+
+		public Joystick Joystick => joystick;
 		
 		/// <summary> Event that activates when user touches the screen. Takes a Vector2 that represent touch position on the screen </summary>
 		public event Action<Vector2> OnTouchAction;
