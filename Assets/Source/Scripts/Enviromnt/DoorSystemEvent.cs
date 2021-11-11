@@ -7,18 +7,28 @@ namespace Ingame.Enviroment
     public class DoorSystemEvent : MonoBehaviour,IEnvromentEvent
     {
         #region IMPLEMENTED_METHODS
-        public event Action OnAction;
+ 
+        public event Action OnActionEnter;
+        public event Action OnActionExit;
 
         public void ActionEnter()
         {
-            if(OnAction == null)
+            if(OnActionEnter == null)
             {
                 return;
             }
-            OnAction();
+            OnActionEnter();
             
         }
+        public void ActionExit()
+        {
+            if (OnActionExit == null)
+            {
+                return;
+            }
+            OnActionExit();
 
+        }
         #endregion
 
         public static IEnvromentEvent Event;

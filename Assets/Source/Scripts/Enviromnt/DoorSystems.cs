@@ -10,7 +10,8 @@ namespace Ingame.Enviroment
         // Start is called before the first frame update
         void Start()
         {
-            DoorSystemEvent.Event.OnAction += OpenDoor;
+            DoorSystemEvent.Event.OnActionEnter += OpenDoor;
+            DoorSystemEvent.Event.OnActionEnter += OpenDoor;
         }
 
         // Update is called once per frame
@@ -19,6 +20,10 @@ namespace Ingame.Enviroment
             //open
             transform.DOMove(transform.position - Vector3.up*5,2);
             
+        }
+        private void CloseDoor()
+        {
+            transform.DOMove(transform.position + Vector3.up * 5, 2);
         }
          
     }

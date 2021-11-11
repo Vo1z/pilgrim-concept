@@ -7,9 +7,11 @@ namespace Ingame.Enviroment {
     public interface IEnvromentEvent 
     {
         //enviroment changes
-        public event Action OnAction;
+        public event Action OnActionEnter;
 
         //player triggers action
         public void ActionEnter();
+        public event Action OnActionExit;
+        public void ActionExit();
     }
 }
