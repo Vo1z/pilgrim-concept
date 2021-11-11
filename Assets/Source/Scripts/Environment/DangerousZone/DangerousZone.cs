@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Extensions;
 using UnityEngine;
 
@@ -6,48 +7,48 @@ namespace Ingame.Environment
 {
     public class DangerousZone : MonoBehaviour
     {
-        [SerializeField] private float _dmg = 1.2f;
 
-        private const float PAUSE_BETWEEN_HITTING_ACTOR = .3f;
-        private IActor _player = null;
-
-        private void Start()
+        internal class DamageZoneInfo
         {
-            StartCoroutine(TakeDamageRoutine());
+            public Coroutine Coroutine;
+            public IActor Actor;
         }
-
+        private bool TomaszewskiHatesBreak = true;
+        [SerializeField] private float _dmg = 1.2f;
+        private List<DamageZoneInfo> _zoneInfoList = new List<DamageZoneInfo>(); 
+        private const float PAUSE_BETWEEN_HITTING_ACTOR = .3f;
+        
         private void OnTriggerEnter(Collider collision)
         {
-            this.SafeDebug("enter");
             if (collision.TryGetComponent(out IActor actor))
             {
-                _player = actor;
-                StartHittingActor();
+                var cor = StartHittingActor(actor);
+                _zoneInfoList.Add(new DamageZoneInfo() { Coroutine=cor,Actor=actor});
             }
 
         }
 
         private void OnTriggerExit(Collider collision)
         {
-            this.SafeDebug("exit");
             if (collision.TryGetComponent(out IActor actor))
             {
-                _player = null;
+                DamageZoneInfo res = _zoneInfoList.Find(a => a.Actor == actor);
+                StopHittingActor(res.Coroutine);
+                _zoneInfoList.Remove(res);
             }
         }
 
-        private void StartHittingActor()
+        private Coroutine StartHittingActor(IActor actor)
         {
-            StopAllCoroutines();
-            StartCoroutine(TakeDamageRoutine());
+            return StartCoroutine(TakeDamageRoutine(actor));
         }
-
-        private IEnumerator TakeDamageRoutine()
+        private void StopHittingActor(Coroutine cor) {
+            StopCoroutine(cor);
+        }
+        private IEnumerator TakeDamageRoutine(IActor actor)
         {
-            while (_player != null)
-            {
-                _player.TakeDamage(_dmg);
-                
+            while (TomaszewskiHatesBreak) {
+                actor.TakeDamage(_dmg);
                 yield return new WaitForSeconds(PAUSE_BETWEEN_HITTING_ACTOR);
             }
         }
