@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-namespace Ingame.Enviroment
+namespace Ingame.Environment
 {
     public class DoorSystemTrigger : MonoBehaviour
     {
@@ -9,7 +7,7 @@ namespace Ingame.Enviroment
         {
             if (other.gameObject.TryGetComponent(out IActor actor))
             {
-                DoorSystemEvent.Event.ActionEnter();
+                DoorSystemEvent.Instance.ActionEnter();
             }
         }
 
@@ -17,7 +15,7 @@ namespace Ingame.Enviroment
         {
             if (other.gameObject.TryGetComponent(out IActor actor))
             {
-                DoorSystemEvent.Event.ActionExit();
+                DoorSystemEvent.Instance.ActionExit();
             }
         }
     }

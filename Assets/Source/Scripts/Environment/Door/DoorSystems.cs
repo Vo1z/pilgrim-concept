@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ingame.Enviroment
+namespace Ingame.Environment
 {
     public class DoorSystems : MonoBehaviour
     {
@@ -11,8 +11,8 @@ namespace Ingame.Enviroment
         // Start is called before the first frame update
         void Start()
         {
-            DoorSystemEvent.Event.OnActionEnter += OpenDoor;
-            DoorSystemEvent.Event.OnActionEnter += CloseDoor;
+            DoorSystemEvent.Instance.OnActionEnter += OpenDoor;
+            DoorSystemEvent.Instance.OnActionEnter += CloseDoor;
         }
 
         // Update is called once per frame

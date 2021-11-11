@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   rotationSpeed: 1
+  gravityForce: 1
+  initialHp: 50

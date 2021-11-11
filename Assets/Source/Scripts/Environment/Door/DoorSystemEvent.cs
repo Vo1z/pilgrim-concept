@@ -1,13 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-namespace Ingame.Enviroment
+using Support;
+
+namespace Ingame.Environment
 {
-    public class DoorSystemEvent : MonoBehaviour,IEnvromentEvent
+    public class DoorSystemEvent : MonoSingleton<DoorSystemEvent>
     {
-        #region IMPLEMENTED_METHODS
- 
         public event Action OnActionEnter;
         public event Action OnActionExit;
 
@@ -20,6 +17,7 @@ namespace Ingame.Enviroment
             OnActionEnter();
             
         }
+        
         public void ActionExit()
         {
             if (OnActionExit == null)
@@ -29,14 +27,5 @@ namespace Ingame.Enviroment
             OnActionExit();
 
         }
-        #endregion
-
-        public static IEnvromentEvent Event;
-
-        private void Awake()
-        {
-            Event = this;
-        }
-
     }
 }
