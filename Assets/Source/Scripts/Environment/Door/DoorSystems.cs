@@ -7,11 +7,11 @@ namespace Ingame.Environment
 {
     public class DoorSystems : MonoBehaviour
     {
-        [SerializeField] private float _openRate=25;
+        [SerializeField] private float openRate=25;
         private DoorSystemTrigger _trigger;
         private void Awake()
         {
-            
+            _trigger = gameObject.GetComponentInChildren<DoorSystemTrigger>();
         }
         // Start is called before the first frame update
         void Start()
@@ -23,12 +23,19 @@ namespace Ingame.Environment
         // Update is called once per frame
         private void OpenDoor()
         {
-            transform.DOMove(transform.position + Vector3.up * _openRate, 2);
+            if (!_trigger.IsTriggered)
+            {
+                return;
+            }
+            transform.DOMove(transform.position + Vector3.up * openRate, 2);
+            
         }
         private void CloseDoor()
         {
-
-            transform.DOMove(transform.position + Vector3.down * _openRate, 2);
+            if (!_trigger.IsTriggered)
+            {
+                transform.DOMove(transform.position + Vector3.down * openRate, 2);
+            }
         }
          
     }
