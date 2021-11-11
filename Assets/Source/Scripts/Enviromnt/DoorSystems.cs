@@ -18,6 +18,7 @@ namespace Ingame.Enviroment
         {
             //open
             transform.DOMove(transform.position - Vector3.up*5,2);
+            
         }
          
     }

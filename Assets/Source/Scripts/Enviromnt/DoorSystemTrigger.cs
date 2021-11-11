@@ -7,7 +7,7 @@ namespace Ingame.Enviroment
     {
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.GetComponent<IActor>()!=null)
+            //if(other.gameObject.GetComponent<IActor>()!=null)
                 DoorSystemEvent.Event.ActionEnter();
         }
     }
