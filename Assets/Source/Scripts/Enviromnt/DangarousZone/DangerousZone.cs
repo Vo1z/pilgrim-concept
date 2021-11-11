@@ -5,16 +5,24 @@ namespace Ingame.Enviroment {
     public class DangerousZone : MonoBehaviour
     {
         [SerializeField] private float _dmg = 1.2f;
-        [SerializeField] private IActor _player;
-        private bool _isOnDangerousZone = false;
+        [HideInInspector]private bool _isOnDangerousZone = false;
+        private IActor _player = null;
         private void OnCollisionEnter(Collision collision)
         {
-            _isOnDangerousZone = true;
+            if (collision.gameObject.TryGetComponent(out IActor actor)) {
+                _player = actor;
+                _isOnDangerousZone = true;
+            }
+               
         }
 
         private void OnCollisionExit(Collision collision)
         {
-            _isOnDangerousZone = false;
+            if (collision.gameObject.TryGetComponent(out IActor actor))
+            {
+                _player = null;
+                _isOnDangerousZone = false;
+            }
         }
 
         void Start()
@@ -24,7 +32,7 @@ namespace Ingame.Enviroment {
 
         private IEnumerator TakeDamage()
         {
-            if (_isOnDangerousZone)
+            if (_isOnDangerousZone && _player!=null)
             {
                 _player.TakeDamage(_dmg);
             }
