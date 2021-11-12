@@ -13,14 +13,14 @@ namespace Ingame.Environment
         {
             _trigger = gameObject.GetComponentInChildren<DoorSystemTrigger>();
         }
-        // Start is called before the first frame update
+ 
         void Start()
         {
             DoorSystemEvent.Instance.OnActionEnter += OpenDoor;
             DoorSystemEvent.Instance.OnActionExit += CloseDoor;
         }
 
-        // Update is called once per frame
+ 
         private void OpenDoor()
         {
             if (!_trigger.IsTriggered)
