@@ -8,14 +8,14 @@ namespace Ingame
     {
         [Foldout("Movement")][SerializeField][Min(0)] private float movementSpeed = 10;
         [Foldout("Movement")][SerializeField][Min(0)] private float rotationSpeed = 1;
-        [Foldout("Movement")][SerializeField][Min(0)] private float gravityForce = 1;
-        
-        
+        [Foldout("Movement")][SerializeField][Min(0)] private float jumpForce = 10;
+
+
         [Foldout("Lifetime")][SerializeField][Min(0)] private float initialHp;
 
         public float MovementSpeed => movementSpeed;
         public float RotationSpeed => rotationSpeed;
-        public float GravityForce => gravityForce;
+        public float JumpForce => jumpForce;
 
         public float InitialHp => initialHp;
     }
