@@ -766,30 +766,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 515811217, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
-      propertyPath: smooth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 515811217, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
-      propertyPath: multiplier
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 515811217, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
-      propertyPath: rotationZMultiplier
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 604987140, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 604987141, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 604987141, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8219348041145817298, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
       propertyPath: m_Name
       value: Player
@@ -838,8 +814,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8219348041145817289, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cdedf5016280474a9295af6f3bc0072, type: 3}
 --- !u!1001 &1493151133
 PrefabInstance:

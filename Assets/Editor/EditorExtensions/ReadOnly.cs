@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace EditorExtensions
 {
+    #if UNITY_EDITOR
     /// <summary>
     /// Attribute that defines custom view for ReadOnlyAttribute
     /// </summary>
@@ -21,4 +22,5 @@ namespace EditorExtensions
 
     [AttributeUsage(AttributeTargets.Field)]
     public class ReadOnlyAttribute : PropertyAttribute { }
+    #endif
 }

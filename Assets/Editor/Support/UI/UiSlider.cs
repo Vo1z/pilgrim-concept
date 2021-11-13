@@ -10,7 +10,7 @@ namespace Support.UI
     /// </summary>
     public class UiSlider : MonoBehaviour
     {
-        [NotNull]
+
         [Tooltip("Image that represents front part of the slider")]
         [SerializeField] private Image frontImage;
         [Tooltip("Image that represents back part of the slider")]
